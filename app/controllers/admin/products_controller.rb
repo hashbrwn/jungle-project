@@ -1,5 +1,7 @@
 class Admin::ProductsController < ApplicationController
-
+  # Added HTTP Basic Authentication with specified username and password
+  http_basic_authenticate_with name: "Jungle", password: "book", only: [:index, :new, :create, :destroy]
+  
   def index
     @products = Product.order(id: :desc).all
   end
@@ -38,3 +40,4 @@ class Admin::ProductsController < ApplicationController
   end
 
 end
+
